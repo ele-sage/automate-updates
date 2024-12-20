@@ -1,5 +1,5 @@
-$ScriptPath = "C:\Windows\Setup\Files\AutomateUpdates.ps1"
-$ScriptLogFile = "C:\Windows\Setup\Files\AutomateUpdates.log"
+$ScriptPath = "C:\Windows\Setup\AutomateUpdates.ps1"
+$ScriptLogFile = "C:\Windows\Setup\AutomateUpdates.log"
 
 # Helper function for logging
 function Log-Message {
