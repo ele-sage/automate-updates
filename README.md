@@ -2,7 +2,7 @@
 
 ### 1. Préparation de l'image Windows avec NTLite :
 
-##### 1.1 Ajout du Script [AutomateUpdates.ps1](http://192.168.121.33:6875/attachments/1)
+##### 1.1 Ajout du Script `AutomateUpdates.ps1`
 
 ![ChoseAutomateUpdatesFile.png](ChoseAutomateUpdatesFile.png)
 
