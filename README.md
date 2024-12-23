@@ -9,8 +9,8 @@
 
 ##### 1.2 Changé les paramètres du fichier `AutomateUpdates.ps1`
 
-1.1 Changé le Type `Run` → `Copy`
-1.2 Changé la Destination `\Windows\Setup\Files\AutomateUpdates.ps1` → `\Windows\Setup\AutomateUpdates.ps1`
+  1 Changé le Type `Run` → `Copy`
+  2 Changé la Destination `\Windows\Setup\Files\AutomateUpdates.ps1` → `\Windows\Setup\AutomateUpdates.ps1`
 
 ![ChangeParameters.png](ChangeParameters.png)
 
