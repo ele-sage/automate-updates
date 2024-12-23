@@ -2,12 +2,12 @@
 
 ### 1. Préparation de l'image Windows avec NTLite :
 
-##### 1.1 Ajout du Script `AutomateUpdates.ps1`
+#### 1.1 Ajout du Script `AutomateUpdates.ps1`
 
 ![ChoseAutomateUpdatesFile.png](ChoseAutomateUpdatesFile.png)
 
 
-##### 1.2 Changé les paramètres du fichier `AutomateUpdates.ps1`
+#### 1.2 Changé les paramètres du fichier `AutomateUpdates.ps1`
 
   - Changé le Type `Run` → `Copy`
   - Changé la Destination `\Windows\Setup\Files\AutomateUpdates.ps1` → `\Windows\Setup\AutomateUpdates.ps1`
@@ -15,7 +15,7 @@
 ![ChangeParameters.png](ChangeParameters.png)
 
 
-##### 1.3 Ajouter la clé de registre
+#### 1.3 Ajouter la clé de registre
 
 ![ChoseRegFile.png](ChoseRegFile.png)
 
