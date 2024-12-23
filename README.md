@@ -23,7 +23,7 @@
 <details id="bkmrk-commande-utilis%C3%A9-pou"><summary>Commande utilisé pour générer la clé de registre</summary>
 
 Set-ItemProperty -Path "HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce" -Name "CheckForUpdatesAfterReboot" -Value "Powershell.exe -ExecutionPolicy Bypass -File C:\\Windows\\Setup\\AutomateUpdates.ps1"
-
+</details>
 - Cette clé de registre permet l'exécution automatiques du script `AutomateUpdates.ps1` après le premier démarrage.
 
 ### 2. Fonctionnement du script AutomateUpdates.ps1 :
