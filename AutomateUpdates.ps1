@@ -1,5 +1,6 @@
 $ScriptPath = "C:\Windows\Setup\AutomateUpdates.ps1"
 $ScriptLogFile = "C:\Windows\Setup\AutomateUpdates.log"
+$WindowsUpdateLog = "C:\Windows\Setup\WindowsUpdate.log"
 
 # Helper function for logging
 function Log-Message {
@@ -13,6 +14,30 @@ function Log-Message {
 
 # Log start of the script
 Log-Message "Starting AutomateUpdates script."
+
+# Sync PC time with Windows time servers
+Log-Message "Syncing system time with Windows time servers."
+try {
+    # Check if w32tm service is running
+    $W32tmService = Get-Service -Name "w32time" -ErrorAction SilentlyContinue
+    if ($W32tmService.Status -ne "Running") {
+        Log-Message "Starting w32time service."
+        Start-Service -Name "w32time"
+    }
+
+    # Sync time with Windows time servers
+    w32tm /config /manualpeerlist:"time.windows.com" /syncfromflags:manual /reliable:yes /update
+    w32tm /resync
+    Log-Message "System time synced successfully."
+
+    # Restart w32time service
+    Log-Message "Restarting w32time service."
+    Restart-Service -Name "w32time"
+    Log-Message "w32time service restarted successfully."
+
+} catch {
+    Log-Message "Failed to sync system time: $_" -Level "ERROR"
+}
 
 # Install NuGet Package Provider
 Log-Message "Attempting to install NuGet Package Provider."
@@ -72,6 +97,8 @@ if ($UpdatesInstalled) {
     # If no updates were installed, delete the script on next boot
     Log-Message "No updates installed. Scheduling script deletion at next boot."
     Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" -Name "DeleteAutomateUpdatesScript" -Value "cmd.exe /c del `"$ScriptPath`""
+    Log-Message "Generating Windows Update log File. ($WindowsUpdateLog)"
+    Get-WindowsUpdateLog -LogPath $WindowsUpdateLog
     Log-Message "Rebooting the system to clean up script."
     Restart-Computer -Force
 }
