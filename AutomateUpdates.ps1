@@ -14,7 +14,7 @@ function Log-Message {
     Add-Content -Path $ScriptLogFile -Value "[$Timestamp] [$Level] $Message"
 }
 
-function Get-WindowsUpdateLog {
+function Generate-WindowsUpdateLog {
     Log-Message "Generating Windows Update log File. ($WindowsUpdateLog)"
     Get-WindowsUpdateLog -LogPath $WindowsUpdateLog
 }
@@ -25,7 +25,7 @@ function Cleanup-Script {
         [bool]$GenerateLog = $true
     )
     if ($GenerateLog) {
-        Get-WindowsUpdateLog
+        Generate-WindowsUpdateLog
     }
     Log-Message "Deleting registry key. ($RebootCountRegistryPath)"
     Remove-Item -Path $RebootCountRegistryPath -Recurse -Force
